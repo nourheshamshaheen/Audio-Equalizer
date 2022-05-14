@@ -344,24 +344,6 @@ end
 % --- Executes on button press in play.
 function play_Callback(hObject, eventdata, handles)
     %Get gains and put in gain
-    g1 = str2double(get(handles.box1, 'String'))
-    g2 = str2double(get(handles.box2, 'String'))
-    g3 = str2double(get(handles.box3, 'String'))
-    g4 = str2double(get(handles.box4, 'String'))
-    g5 = str2double(get(handles.box5, 'String'))
-    g6 = str2double(get(handles.box6, 'String'))
-    g7 = str2double(get(handles.box7, 'String'))
-    g8 = str2double(get(handles.box8, 'String'))
-    g9 = str2double(get(handles.box9, 'String'))
-    gain_array = [g1 g2 g3 g4 g5 g6 g7 g8 g9]
-    
-    %get sample rate
-    sample_rate = str2double(get(handles.edit1, 'String'))
-    
-    %get filepath
-    filepath = get(handles.edit2, 'String')
-    
-    
 
 
 
