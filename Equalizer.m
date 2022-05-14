@@ -377,7 +377,7 @@ function play_Callback(hObject, eventdata, handles)
         axes(handles.axes3);        
         plot(output);                      % Output signal in Time Domain
  
-        axes(handles.axes2); 
+        axes(handles.axes4); 
         out_freq = fft(output);
         plot(real(out_freq));  
     else
