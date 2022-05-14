@@ -1,3 +1,5 @@
+%AUDIO EQUALIZER - 7150, 6850, 6886
+
 function varargout = Equalizer(varargin)
 
 % Begin initialization code - DO NOT EDIT
