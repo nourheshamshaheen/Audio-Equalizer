@@ -344,22 +344,41 @@ end
 % --- Executes on button press in play.
 function play_Callback(hObject, eventdata, handles)
     %Get gains and put in gain
-    g1 = str2double(get(handles.box1, 'String'))
-    g2 = str2double(get(handles.box2, 'String'))
-    g3 = str2double(get(handles.box3, 'String'))
-    g4 = str2double(get(handles.box4, 'String'))
-    g5 = str2double(get(handles.box5, 'String'))
-    g6 = str2double(get(handles.box6, 'String'))
-    g7 = str2double(get(handles.box7, 'String'))
-    g8 = str2double(get(handles.box8, 'String'))
-    g9 = str2double(get(handles.box9, 'String'))
-    gain_array = [g1 g2 g3 g4 g5 g6 g7 g8 g9]
+    g1 = str2double(get(handles.box1, 'String'));
+    g2 = str2double(get(handles.box2, 'String'));
+    g3 = str2double(get(handles.box3, 'String'));
+    g4 = str2double(get(handles.box4, 'String'));
+    g5 = str2double(get(handles.box5, 'String'));
+    g6 = str2double(get(handles.box6, 'String'));
+    g7 = str2double(get(handles.box7, 'String'));
+    g8 = str2double(get(handles.box8, 'String'));
+    g9 = str2double(get(handles.box9, 'String'));
+    gain_array = [g1 g2 g3 g4 g5 g6 g7 g8 g9];
     
     %get sample rate
-    sample_rate = str2double(get(handles.edit1, 'String'))
+    sample_rate = str2double(get(handles.edit1, 'String'));
     
     %get filepath
-    filepath = get(handles.edit2, 'String')
+    filepath = get(handles.edit2, 'String');
+    
+    
+    [Y, fs] = audioread(filepath);
+    axes(handles.axes1);        
+    plot(Y);                          % Original signal in Time Domain
+ 
+    axes(handles.axes2); 
+    original_freq = fft(Y);
+    plot(real(original_freq));       % Original signal in Frequency Domain
+    
+    %FIR OR IIR
+    if (get(handles.radiobutton1,'Value') == 1) %IIR
+        x = 'IIR' %EXECUTE IIR FILTERING
+    else
+        x = 'FIR' %EXECUTE FIR FILTERING
+    end
+    
+    
+
     
     
 
@@ -367,7 +386,16 @@ function play_Callback(hObject, eventdata, handles)
 
 function box1_Callback(hObject, eventdata, handles)
     val = str2double(get(hObject,'String'));
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box1, 'String', num2str(val));
     set(handles.slider1,'Value',val);
+    
+    
 % Hints: get(hObject,'String') returns contents of box1 as text
 %        str2double(get(hObject,'String')) returns contents of box1 as a double
 
@@ -388,6 +416,13 @@ end
 
 function box2_Callback(hObject, eventdata, handles)
     val = str2double(get(hObject,'String'));
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box2, 'String', num2str(val));
     set(handles.slider2,'Value',val);
 
 % Hints: get(hObject,'String') returns contents of box2 as text
@@ -410,6 +445,13 @@ end
 
 function box6_Callback(hObject, eventdata, handles)
     val = str2double(get(hObject,'String'));
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box6, 'String', num2str(val));
     set(handles.slider6,'Value',val);
 
 % Hints: get(hObject,'String') returns contents of box6 as text
@@ -431,7 +473,14 @@ end
 
 
 function box7_Callback(hObject, eventdata, handles)
-    val = str2double(get(hObject,'String'));
+    val = str2double(get(hObject,'String'));    
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box7, 'String', num2str(val));
     set(handles.slider7,'Value',val);
 
 % Hints: get(hObject,'String') returns contents of box7 as text
@@ -453,7 +502,14 @@ end
 
 
 function box8_Callback(hObject, eventdata, handles)
-    val = str2double(get(hObject,'String'));
+    val = str2double(get(hObject,'String'));    
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box8, 'String', num2str(val));
     set(handles.slider8,'Value',val);
 
 % Hints: get(hObject,'String') returns contents of box8 as text
@@ -475,7 +531,14 @@ end
 
 
 function box9_Callback(hObject, eventdata, handles)
-    val = str2double(get(hObject,'String'));
+    val = str2double(get(hObject,'String'));     
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box9, 'String', num2str(val));
     set(handles.slider9,'Value',val);
 
 % Hints: get(hObject,'String') returns contents of box9 as text
@@ -497,7 +560,14 @@ end
 
 
 function box3_Callback(hObject, eventdata, handles)
-    val = str2double(get(hObject,'String'));
+    val = str2double(get(hObject,'String'));    
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box3, 'String', num2str(val));
     set(handles.slider3,'Value',val);
 
 % Hints: get(hObject,'String') returns contents of box3 as text
@@ -519,7 +589,14 @@ end
 
 
 function box5_Callback(hObject, eventdata, handles)
-    val = str2double(get(hObject,'String'));
+    val = str2double(get(hObject,'String'));    
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box5, 'String', num2str(val));
     set(handles.slider5,'Value',val);
 
 % Hints: get(hObject,'String') returns contents of box5 as text
@@ -541,7 +618,14 @@ end
 
 
 function box4_Callback(hObject, eventdata, handles)
-    val = str2double(get(hObject,'String'));
+    val = str2double(get(hObject,'String'));    
+    if val > 100
+        val = 100
+    end
+    if val < -100
+        val = -100
+    end
+    set(handles.box4, 'String', num2str(val));
     set(handles.slider4,'Value',val);
     % Hints: get(hObject,'String') returns contents of box4 as text
 %        str2double(get(hObject,'String')) returns contents of box4 as a double
