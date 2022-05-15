@@ -680,7 +680,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     n = 3;
     %lowpass to get band one from 0 to 170
     f1 = 170;   %critical frequency of band 1
-    [b1,a1] = butter(n,(f1/((sample_rate)/2)),'low'); %getting coeffs of tranfser function of band 1
+    [b1,a1] = butter(n,(f1/((sample_rate)/2)),'low'); %getting coeffs of transfer function of band 1
     %fvtool(b1,a1,'Fs',sample_rate);
     y1 = power(10,gain_array(1)/20)*filter(b1,a1,y);
     
