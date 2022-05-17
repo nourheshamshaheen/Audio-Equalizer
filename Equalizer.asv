@@ -912,7 +912,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     
     f1=170;
     a1=1;
-    b1=fir1(n,(f1/(sample_rate/2)),'low');
+    b1=firl(n,(f1/(sample_rate/2)),'low');
     fvtool(b1,a1,'Fs',sample_rate);
     y1=power(10,gain_array(1)/20)*filter(b1,a1,y);
     
@@ -921,7 +921,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     f1=171;
     f2=310;
     a2=1;
-    b2=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
+    b2=firl(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
     fvtool(b2,a2,'Fs',sample_rate);
     y2=power(10,gain_array(2)/20)*filter(b2,a2,y);
     
@@ -930,7 +930,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     f1=311;
     f2=600;
     a3=1;
-    b3=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
+    b3=firl(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
     fvtool(b3,a3,'Fs',sample_rate);
     y3=power(10,gain_array(3)/20)*filter(b3,a3,y);
     
@@ -939,7 +939,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     f1=601;
     f2=1000;
     a4=1;
-    b4=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
+    b4=firl(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
     fvtool(b4,a4,'Fs',sample_rate);
     y4=power(10,gain_array(4)/20)*filter(b4,a4,y);
     
@@ -948,7 +948,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     f1=1001;
     f2=3000;
     a5=1;
-    b5=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
+    b5=firl(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
     fvtool(b5,a5,'Fs',sample_rate);
     y5=power(10,gain_array(5)/20)*filter(b5,a5,y);
     
@@ -957,7 +957,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     f1=3001;
     f2=6000;
     a6=1;
-    b6=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
+    b6=firl(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
     fvtool(b6,a6,'Fs',sample_rate);
     y6=power(10,gain_array(6)/20)*filter(b6,a6,y);
     
@@ -966,7 +966,7 @@ function slider1ContValCallback(hObject, eventdata, handles)
     f1=6001;
     f2=12000;
     a7=1;
-    b7=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
+    b7=firl(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
     fvtool(b7,a7,'Fs',sample_rate);
     y7=power(10,gain_array(7)/20)*filter(b7,a7,y);
     
@@ -975,150 +975,13 @@ function slider1ContValCallback(hObject, eventdata, handles)
     f1=12001;
     f2=14000;
     a8=1;
-    b8=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
+    b8=firl(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
     fvtool(b8,a8,'Fs',sample_rate);
     y8=power(10,gain_array(8)/20)*filter(b8,a8,y);
     
-    %bandpass8 from 14001-16000hz
-    
-    f1=14001;
-    f2=16000;
-    a9=1;
-    b9=fir1(n,[f1/(sample_rate/2) f2/(sample_rate/2)],'bandpass');
-    fvtool(b9,a9,'Fs',sample_rate);
-    y9=power(10,gain_array(9)/20)*filter(b9,a9,y);
     
     
-    figure;
-    subplot(2,2,1);
-    plot(filter(b1,a1,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b1,a1,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y1);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y1)));
-    title('Filtered Signal W/ Gain (Frequency');
-    
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b2,a2,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b2,a2,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y2);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y2)));
-    title('Filtered Signal W/ Gain (Frequency');
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b3,a3,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b3,a3,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y3);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y3)));
-    title('Filtered Signal W/ Gain (Frequency');
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b4,a4,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b4,a4,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y4);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y4)));
-    title('Filtered Signal W/ Gain (Frequency');
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b5,a5,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b5,5,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y5);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y5)));
-    title('Filtered Signal W/ Gain (Frequency');
-    
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b6,a6,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b6,a6,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y6);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y6)));
-    title('Filtered Signal W/ Gain (Frequency)');
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b7,a7,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b7,a7,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y7);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y7)));
-    title('Filtered Signal W/ Gain (Frequency');
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b8,a8,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b8,a8,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y8);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y8)));
-    title('Filtered Signal W/ Gain (Frequency)');
-    
-    figure;
-    subplot(2,2,1);
-    plot(filter(b9,a9,y));
-    title('Filtered Signal (Time)');
-    subplot(2,2,2);
-    plot(real(fft(filter(b9,a9,y))));
-    title('Filtered Signal (Frequency)');
-    subplot(2,2,3);
-    plot(y9);
-    title('Filtered Signal W/ Gain (Time)');
-    subplot(2,2,4);
-    plot(real(fft(y9)));
-    title('Filtered Signal W/ Gain (Frequency)');
-    
-    y_added = y1 + y2 + y3 + y4 + y5 + y6 + y7 + y8 + y9;
-    output = y_added;
+    output = y;
     
     
     
