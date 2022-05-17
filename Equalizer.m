@@ -370,6 +370,8 @@ function play_Callback(hObject, eventdata, handles)
     original_freq = fft(Y);
     plot(real(original_freq));       % Original signal in Frequency
     
+    [Y]=resample(Y,sample_rate,fs);   %resampling original signal
+    
     %FIR OR IIR
     if (get(handles.radiobutton1,'Value') == 1) %IIR
         x = 'IIR' %EXECUTE IIR FILTERING
