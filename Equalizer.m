@@ -364,7 +364,11 @@ function play_Callback(hObject, eventdata, handles)
     
     [Y, fs] = audioread(filepath);
     
-    if fs > sample_rate/2
+    fs
+    
+    sample_rate
+    
+    if sample_rate < 2*fs || sample_rate < 32000
         f = errordlg('Sample rate too small!','Error')
     else
             axes(handles.axes1);        
